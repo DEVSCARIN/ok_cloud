@@ -29,6 +29,8 @@ class LoginRequest(BaseModel):
 # Função para ler o CSV com os usuários
 def read_users_csv(file_path='users.csv'):
     users = []
+    if not os.path.isfile(file_path):  # verifica se o arquivo existe para evitar erro
+        return users
     with open(file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -51,8 +53,8 @@ def login(data: LoginRequest):
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     file_location = os.path.join(UPLOAD_DIR, file.filename)
+    content = await file.read()
     with open(file_location, "wb") as f:
-        content = await file.read()
         f.write(content)
     return {"filename": file.filename, "message": "Arquivo enviado com sucesso."}
 
@@ -68,7 +70,7 @@ def list_files():
 @app.get("/download/{filename}")
 def download_file(filename: str):
     file_path = os.path.join(UPLOAD_DIR, filename)
-    if os.path.exists(file_path):
+    if os.path.isfile(file_path):
         return FileResponse(path=file_path, filename=filename, media_type='application/octet-stream')
     else:
         raise HTTPException(status_code=404, detail="Arquivo não encontrado.")
