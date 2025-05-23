@@ -1,0 +1,102 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: #fff;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.tab.active {
+  background: #4a90e2;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ABD;
+}
+
+#fileList {
+  list-style: none;
+  padding: 0;
+}
+
+#fileList li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#fileList li button {
+  background-color: #27ae60;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+.message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.message.success {
+  color: green;
+}
+.message.error {
+  color: red;
+}
