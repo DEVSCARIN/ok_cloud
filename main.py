@@ -77,7 +77,7 @@ def download_file(filename: str):
 
 # Servir arquivos estáticos:
 # Pasta /login
-app.mount("/login", StaticFiles(directory="login", html=True), name="login")
+app.mount("/login", StaticFiles(directory=login_dir, html=True), name="login")
 
 # Pasta raiz (onde deve ter index.html, style.css, script.js do dashboard)
 app.mount("/", StaticFiles(directory=".", html=True), name="root")
